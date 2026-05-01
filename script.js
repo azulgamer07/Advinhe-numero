@@ -14,8 +14,8 @@ function verificarPalpite() {
         else if (palpite < numeroSecreto) {
             mensagem.innerText = "Tente um número maior!";
         }
-        else if (palpite > numeroSecreto) {
+        else {
             mensagem.innerText = "Tente um número menor!";
-        } 
+        }
 }
 
