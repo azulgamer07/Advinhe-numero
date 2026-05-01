@@ -1,31 +1,241 @@
 body {
-    font-family: Arial;
-    background: #f4f4f4;
-    text-align: center;
-    margin-top: 10px;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', Arial, sans-serif;
+
+    /* 🎯 gradiente moderno */
+    background: linear-gradient(135deg, #0f172a, #1e293b, #0ea5e9);
 }
 
+/* 🎬 container refinado */
 .container {
-    background: white;
-    width: 400px;
-    margin: auto;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+
+    color: #e2e8f0;
+
+    box-shadow: 
+        0 10px 40px rgba(0,0,0,0.4),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+
+    animation: aparecer 0.8s ease;
 }
 
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+/* 🎮 input moderno */
 input {
-   padding: 10px;
-   width: 200px;
-   margin-bottom: 15px;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    outline: none;
+
+    text-align: center;
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
 }
 
+input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+/* 🎮 botões */
 button {
     padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(135deg, #0284c7, #4f46e5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* 📊 mensagem */
+#mensagem {
+    margin-top: 15px;
+    font-size: 18px;
+    min-height: 24px;
+}
+
+/* 🎉 ACERTO */
+.win {
+    color: #22c55e;
+    font-weight: bold;
+    animation: winAnim 0.6s ease;
+}
+
+@keyframes winAnim {
+    0% { transform: scale(1); text-shadow: 0 0 0px #22c55e; }
+    50% { transform: scale(1.2); text-shadow: 0 0 20px #22c55e; }
+    100% { transform: scale(1); text-shadow: 0 0 5px #22c55e; }
+}
+
+/* 💀 GAME OVER */
+.lose {
+    color: #ef4444;
+    animation: loseAnim 0.6s;
+}
+
+@keyframes loseAnim {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9) rotate(-2deg); }
+    100% { transform: scale(1); }
+}
+
+/* 💥 ERRO */
+.erro {
+    animation: erroAnim 0.4s;
+}
+
+@keyframes erroAnim {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+}
+
+/* 🔊 volume container */
+.volume-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 10px;
+
+    background: rgba(255,255,255,0.08);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+/* 🎚️ slider moderno */
+#volume {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 6px;
+    border-radius: 5px;
+    background: #ccc;
     cursor: pointer;
 }
 
-#mensagem {
-    margin-top: 20px;
-    font-weight: bold;
+/* bolinha */
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+/* 🔊 ícone */
+#iconeVolume {
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+/* ✨ animação mute */
+.mute-anim {
+    animation: pulse 0.3s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+/* 🎆 Confete */
+.confete {
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 8px;
+    z-index: 9999; /* 🔥 garante que aparece por cima */
+
+    animation: cair 1s linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* 💀 Game over shake forte */
+.gameover-screen {
+    animation: tremerTela 0.5s;
+}
+
+@keyframes tremerTela {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* ✨ botão ao clicar */
+button:active {
+    transform: scale(0.95);
+}
+
+.barra-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#barraProximidade {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+    /* cor inicial */
+    background: linear-gradient(90deg, #ef4444, #facc15, #22c55e);
 }
